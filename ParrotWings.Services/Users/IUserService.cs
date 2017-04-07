@@ -1,0 +1,20 @@
+﻿using ParrotWings.Models.Domain.Accounts;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ParrotWings.Services.Users
+{
+    public interface IUserService
+    {
+        User FindUserById(Guid id);
+        Task<User> FindUserByIdAsync(Guid id);
+        
+        User FindUserByEmail(string email);
+        Task<User> FindUserByEmailAsync(string email);
+        
+        IEnumerable<User> GetUsersByName(string name);
+        Task<IEnumerable<User>> GetUsersByNameAsync(string name);
+    }
+}
