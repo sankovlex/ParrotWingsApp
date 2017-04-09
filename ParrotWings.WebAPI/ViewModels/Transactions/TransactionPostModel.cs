@@ -12,6 +12,6 @@ namespace ParrotWings.WebAPI.ViewModels.Transactions
 
         public string Message { get; set; }
         
-        public string RecipientName { get; set; }
+        public UserViewModel Recipient { get; set; }
     }
 }

@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 box send-form">
+            <a href="/profile"><i class="fa fa-long-arrow-left"></i> back</a>
+            <br />
+            <br />
+            <h1>Enter transaction data...</h1>
+            <hr />
+            <form role="form" ng-submit="vm.transact()">
+                <div class="input-group">
+                    <span class="input-group-addon" id="recipient"><i class="fa fa-user" style="width:25px"></i></span>
+                    <div class="input-group-btn {{vm.show}}">
+                        <div class="dropdown-menu">
+                            <h6 class="dropdown-header">Choose from the list</h6>
+                            <a class="dropdown-item" href="#" ng-repeat="user in vm.users" ng-click="vm.choiceUser(user)">{{user.name}}<br /><span class="small">{{user.email}}</span></a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" aria-describedby="recipient"
+                           ng-model="vm.transaction.recipient.name"
+                           ng-change="vm.getUsers(vm.transaction.recipient.name)"
+                           ng-model-options='{ debounce: 300 }'>
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" id="amount"><i class="fa fa-dollar" style="width:25px"></i></span>
+                    <input type="number" class="form-control" placeholder="Amount" aria-describedby="amount" ng-model="vm.transaction.amount">
+                </div>
+                <br />
+                <div class="input-group">
+                    <span class="input-group-addon" id="message"><i class="fa fa-envelope" style="width:25px"></i></span>
+                    <input type="text" class="form-control" placeholder="Message" aria-describedby="message" maxlength="50" ng-model="vm.transaction.message">
+                </div>
+                <br />
+                <div class="alert alert-danger" ng-show="vm.error">
+                    <span class="alert-danger">{{vm.error}}</span>
+                    <br />
+                </div>
+                <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Send money</button></div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>

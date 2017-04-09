@@ -1,4 +1,5 @@
-﻿using ParrotWings.Models.Domain.Transactions;
+﻿using ParrotWings.Models.Domain.Accounts;
+using ParrotWings.Models.Domain.Transactions;
 using ParrotWings.Models.OptionalParametres;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ParrotWings.Services.Transactions
         Transaction FindById(Guid userId, int transactionId);
         Task<Transaction> FindByIdAsync(Guid userId, int transactionId);
 
-        void SendTransaction(Guid id, Transaction transaction, string recipientName);
-        Task SendTransactionAsync(Guid id, Transaction transaction, string recipientName);
+        void SendTransaction(Guid id, Transaction transaction, User user);
+        Task SendTransactionAsync(Guid id, Transaction transaction, User user);
     }
 }

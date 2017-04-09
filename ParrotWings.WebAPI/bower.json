@@ -1,0 +1,15 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "jquery": "3.2.1",
+    "bootstrap": "4.0.0-alpha.6",
+    "angular": "1.6.4",
+    "angular-route": "1.6.4",
+    "angular-cookies": "1.6.4",
+    "angular-messages": "1.6.4",
+    "angular-input-mask": "0.0.8",
+    "font-awesome": "4.7.0",
+    "sequencejs": "2.1.0"
+  }
+}

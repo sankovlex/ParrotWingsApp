@@ -1,0 +1,36 @@
+﻿<div class="row loggin-page" style="">
+    <div class="col-md-9 left-box">
+        <div class="media-content align-middle">
+            <h4 class="display-3">
+                Parrot Wings <br />
+                <small>The best money transfers</small>
+            </h4>
+        </div>
+    </div>
+
+    <div class="col-md-3 log-box">
+        <h1>Sign In</h1>
+        <form name="form" role="form" ng-submit="vm.login()">
+            <div class="form-group">
+                <!--<label class="control-label" for="email">Email</label>-->
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="vm.user.email" required>
+                <span ng-messages="form.email.$error">
+                    <span class="alert-danger" ng-message="required">Email is required!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <!--<label class="control-label" for="password">Password</label>-->
+                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.user.password" required>
+                <span ng-messages="form.email.$error">
+                    <span class="alert-danger" ng-message="required">Email is required!</span>
+                </span>
+            </div>
+            <div class="alert alert-danger" ng-show="vm.error">
+                <span class="alert-danger">{{vm.error}}</span>
+                <br />
+            </div>
+            <button type="submit" class="btn btn-default">SignIn</button>
+            <a href="/register">Or SignUp</a>
+        </form>
+    </div>
+</div>

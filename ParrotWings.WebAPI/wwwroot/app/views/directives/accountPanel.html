@@ -1,0 +1,13 @@
+﻿<ul class="navbar-nav" ng-show="vm.auth.isLoggedIn()">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i> {{$root.identity.email}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="userMenu">
+            <a class="dropdown-item" href="/profile"><i class="fa fa-user"></i> Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" ng-click="vm.logout()"><i class="fa fa-sign-out"></i> Logout</a>
+        </div>
+    </li>
+</ul>
+<a href="/login" class="btn btn-outline-primary" ng-show="!vm.auth.isLoggedIn()">Sign In</a>

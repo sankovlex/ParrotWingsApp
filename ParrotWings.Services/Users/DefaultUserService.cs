@@ -18,14 +18,14 @@ namespace ParrotWings.Services.Users
             this.userRepository = userRepository;
         }
 
-        public User FindUserByEmail(string email)
+        public User FindUserByEmailOrName(string email, string name = "")
         {
             throw new NotImplementedException();
         }
 
-        public async Task<User> FindUserByEmailAsync(string email)
+        public async Task<User> FindUserByEmailOrNameAsync(string email, string name = "")
         {
-            return await userRepository.FindAsync(x => x.Email == email);
+            return await userRepository.FindAsync(x => x.Email == email || x.Name == name);
         }
 
         public User FindUserById(Guid id)

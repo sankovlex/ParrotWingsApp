@@ -1,0 +1,108 @@
+﻿@import "../functions/mixins";
+
+/*$first-color: #3D3D3D;*/
+$first-color: #3D3D3D;
+
+/* Style the Sequence container */
+#sequence {
+    position: relative;
+    width: 100%;
+    height: 585px;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    background-color: $first-color;
+
+    .seq-canvas,
+    .seq-canvas > * {
+        /* Reset */
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .seq-canvas {
+        > * {
+            text-align: center;
+            /* Stack the steps in the same place (no canvas animation) */
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100%;
+            width: 100%;
+            color: #fff;
+        }
+        /* Make the canvas the same dimensions as the container and prevent lines from
+        wrapping so each step can sit side-by-side */
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        white-space: nowrap;
+        font-size: 0;
+        /* Used to vertically center align the .content element */
+        > li:before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+    }
+    /* Vertically center align the .content element */
+    .content {
+        /* Default styles for content */
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 4%;
+        /* Reset the font-size from 0 back to 16 */
+        font-size: 16px;
+    }
+
+    .seq-title {
+        /* Starting positions */
+        margin: 0 0 .5em 0;
+        display: block;
+        line-height: 1.4;
+        font-size: 3.8em;
+        opacity: 0;
+        @include prefixed(transition-duration, ".6s");
+        @include prefixed(transition-property, "opacity, transform");
+        @include prefixed(transform, "translateX(100px) translateY(0) translateZ(0)");
+    }
+
+    .seq-text {
+        opacity: 0;
+        @include prefixed(transition-duration, ".9s");
+        @include prefixed(transition-property, "opacity, transform");
+        @include prefixed(transform, "translateX(100px) translateY(0) translateZ(0)");
+    }
+
+    .seq-in {
+        /* Animate in positions for content */
+        .seq-title {
+            opacity: 1;
+            @include prefixed(transform, "translateX(0) translateY(0) translateZ(0)");
+        }
+
+        .seq-text {
+            opacity: 1;
+            @include prefixed(transform, "translateX(0) translateY(0) translateZ(0)");
+        }
+    }
+
+    .seq-out {
+        /* Animate out positions for content */
+        .seq-title {
+            opacity: 0;
+            @include prefixed(transition-duration, ".6s");
+            @include prefixed(transform, "translateX(-100px) translateY(0) translateZ(0)");
+        }
+
+        .seq-text {
+            opacity: 0;
+            @include prefixed(transition-duration, ".3s");
+            @include prefixed(transform, "translateX(-100px) translateY(0) translateZ(0)");
+        }
+    }
+}

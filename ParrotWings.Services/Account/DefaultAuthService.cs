@@ -15,6 +15,7 @@ using ParrotWings.Models.Options;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Data.SqlClient;
+using ParrotWings.Models.Domain.Transactions;
 
 namespace ParrotWings.Services.Account
 {
@@ -23,13 +24,15 @@ namespace ParrotWings.Services.Account
         private AppSettings appSettings;
         private IPasswordProtector passwordProtector;
         private IRepository<User> userRepository;
+        private IRepository<Transaction> transactionRepository;
 
         private const string AUTH_NAME = "Bearer";
 
-        public DefaultAuthService(IOptions<AppSettings> appSettings, IRepository<User> userRepository, IPasswordProtector passwordProtector)
+        public DefaultAuthService(IOptions<AppSettings> appSettings, IRepository<User> userRepository, IPasswordProtector passwordProtector, IRepository<Transaction> transactionRepository)
         {
             this.appSettings = appSettings.Value;
             this.userRepository = userRepository;
+            this.transactionRepository = transactionRepository;
             this.passwordProtector = passwordProtector;
         }
 
@@ -54,14 +57,24 @@ namespace ParrotWings.Services.Account
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627)
+                if (ex.Number == 2627 || ex.Number == 547 || ex.Number == 2601)
                     throw new Exception("A user with this email is registered");
                 throw new Exception($"Code: {ex.Number}. {ex.Message}");
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("A user with this email is registered");
             }
+
+            var pw = await userRepository.FindAsync(x => x.Email == "parrot@wings.app");
+            var newUser = await userRepository.FindAsync(x => x.Email == user.Email);
+
+            await transactionRepository.CreateAsync(new Transaction {
+                Amount = 500,
+                Message = "Welcome to our service!",
+                Sender = pw,
+                Recipient = newUser
+            });
         }
 
         public ClaimsIdentity GetIdentity(string username, string password)
@@ -117,9 +130,10 @@ namespace ParrotWings.Services.Account
 
             var accessToken = new JwtSecurityTokenHandler().WriteToken(jwtToken);
 
-            return new BearerToken() {
-                Access_Token = accessToken,
-                User_Email = identity.Name
+            return new BearerToken()
+            {
+                Access_token = accessToken,
+                User_email = identity.Name
             };
         }
     }

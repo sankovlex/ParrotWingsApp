@@ -1,0 +1,67 @@
+﻿
+
+<div class="row loggin-page" style="">
+    <div class="col-md-9 left-box">
+        <div class="media-content align-middle">
+            <h4 class="display-3">
+                Parrot Wings <br />
+                <small>The best money transfers</small>
+            </h4>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="log-box">
+            <h1>Sign Up</h1>
+            <form name="form" ng-submit="vm.register()">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="vm.user.name" required>
+                </div>
+                <div class="form-group {{ !form.email.$error.pattern && vm.user.email ? 'has-success' : ''}}
+         {{ form.email.$error.pattern && !vm.user.email ? 'has-danger' : ''}}">
+                    <label for="email">Email</label>
+
+                    <input type="email"
+                           class="form-control {{form.email.$error.pattern ? 'form-control-danger' : 'form-control-success'}}"
+                           placeholder="Enter email"
+                           id="email"
+                           name="email"
+                           ng-model="vm.user.email"
+                           required
+                           ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' />
+
+                    <div class="form-control-feedback" ng-messages="form.email.$error">
+                        <div ng-message="pattern">This email format is invalid!</div>
+                    </div>
+                </div>
+                <div class="form-group {{ !form.password.$error.pattern && vm.user.password ? 'has-success' : ''}}
+         {{ form.password.$error.pattern && !vm.user.password ? 'has-danger' : ''}}">
+                    <label for="password">Password</label>
+                    <input type="password"
+                           class="form-control {{form.password.$error.pattern ? 'form-control-danger' : 'form-control-success'}}"
+                           placeholder="Enter password"
+                           id="password"
+                           name="password"
+                           ng-model="vm.user.password"
+                           ng-pattern="/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"
+                           required>
+                    <div class="form-control-feedback" ng-messages="form.password.$error">
+                        <div ng-message="pattern">Minimum 8 characters at least 1 upper case and 1 lower case and 1 digit and 1 special character</div>
+                    </div>
+                </div>
+                <div class="form-group {{ vm.user.password && (vm.user.password == vm.user.confirmPassword) ? 'has-success' : ''}}">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" class="form-control {{ vm.user.password && (vm.user.password == vm.user.confirmPassword) ? 'form-control-success' : ''}}" placeholder="Confirm password" id="confirmPassword" ng-model="vm.user.confirmPassword">
+                    <span class="form-control-feedback" ng-show="">Passwords must be equal</span>
+                </div>
+                <div class="alert alert-danger" ng-show="vm.error">
+                    <span class="alert-danger">{{vm.error}}</span>
+                    <br />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-secondary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

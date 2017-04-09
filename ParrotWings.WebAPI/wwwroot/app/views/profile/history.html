@@ -1,0 +1,57 @@
+﻿<div class="container">
+    <div class="box history">
+        <a href="/profile"><i class="fa fa-long-arrow-left"></i> back</a>
+        <br />
+        <br />
+        <h1>History of your transactions</h1>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control"
+                            id="sort"
+                            name="singleSelect"
+                            ng-model="vm.sort"
+                            ng-change="vm.onSelectChange()"
+                            ng-options="order as order.name for order in vm.orders"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" class="form-control" id="filter" placeholder="Filter" ng-model="vm.filterString" ng-change="vm.onTextChange()">
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <h4>Total balance: {{vm.balance | currency}}</h4>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td class="text-center">ID</td>
+                    <td class="text-center">Correspondent</td>
+                    <td class="text-center">Date</td>
+                    <td class="text-center">Transaction</td>
+                    <td class="text-center">Message</td>
+                    <td class="text-center">Amount</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transaction in vm.transactions">
+                    <td class="text-center">{{transaction.transactionId}}</td>
+                    <td class="text-center"><strong>{{transaction.correspondent.name}}</strong></td>
+                    <td class="text-center">{{transaction.dateCreate}}</td>
+                    <td class="text-center">{{transaction.sender.name}} <i class="fa fa-long-arrow-right"></i> {{transaction.recipient.name}}</td>
+                    <td class="text-center">{{transaction.message}}</td>
+                    <td class="text-center"><strong><span class="{{transaction.type == 0 ? 'debit' : 'credit'}}">{{transaction.amount | currency}}</span></strong></td>
+                    <td class="text-center"><a href="/send/{{transaction.transactionId}}" class=""><i class="fa fa-copy"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

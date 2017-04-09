@@ -37,7 +37,7 @@ namespace ParrotWings.Data.Core
             //Server=(localdb)\mssqllocaldb;Database=myway_db;Trusted_Connection=True;
             //Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
             //if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=pw_db;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=pw_db;Integrated Security=True");
         }
 
         public new DbSet<TEntity> Set<TEntity>() where TEntity : class

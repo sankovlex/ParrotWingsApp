@@ -83,8 +83,8 @@ namespace ParrotWings.Tests.API
         {
             //Arrage
             var token = new BearerToken() {
-                Access_Token = "1234token",
-                User_Email = "sankovlex@gmail.com"
+                Access_token = "1234token",
+                User_email = "sankovlex@gmail.com"
             };
 
             var claims = new[] {
@@ -104,7 +104,7 @@ namespace ParrotWings.Tests.API
 
             //Assert
             var result = Assert.IsType<OkObjectResult>(action);
-            Assert.Equal(token.Access_Token, "1234token");
+            Assert.Equal(token.Access_token, "1234token");
         }
 
         [Fact]

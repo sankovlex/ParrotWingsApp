@@ -1,0 +1,60 @@
+﻿<div class="container profile-page">
+    <div class="row box">
+        <div class="col-md-6">
+            <div class="user-identity">
+                <h1 class="display-3">{{vm.user.name}}</h1>
+                <h2><span class="small">{{vm.user.email}}</span></h2>
+            </div>
+        </div>
+        <div class="col-md-6 text-md-right text-sm-left">
+            <div class="user-finance">
+                <h1 class="display-2">{{vm.balance | currency}}</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7 box">
+            <div>
+                <h4>Last transactions</h4>
+                <table class="table last-transactions">
+                    <tr ng-repeat="transaction in vm.sentTransactions">
+                        <td class="align-middle">
+                            <strong>{{transaction.correspondent.name}}</strong>
+                        </td>
+                        <td class="align-top text-center">
+                            <small>{{transaction.dateCreate}}</small><br />
+                            <span class="small destination">{{transaction.sender.name}} <i class="fa fa-long-arrow-right"></i> {{transaction.recipient.name}}</span>
+                        </td>
+                        <td class="text-center align-middle">
+                            <strong><span class="{{transaction.type == 0 ? 'debit' : 'credit'}}">{{transaction.amount | currency}}</span></strong>
+                        </td>
+                        <td class="text-center align-middle">
+                            <a href="/send/{{transaction.transactionId}}" class=""><i class="fa fa-copy"></i></a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="text-right"><a href="/history">View history</a></div>
+            </div>
+
+        </div>
+        <div class="col-md-5 box">
+            <div class="text-center">
+                <h4>Create your transaction</h4>
+                <br />
+                <a href="/send" class="btn btn-primary btn-lg">Create transaction</a>
+            </div>
+        </div>
+    </div>
+
+
+    <hr />
+
+</div>

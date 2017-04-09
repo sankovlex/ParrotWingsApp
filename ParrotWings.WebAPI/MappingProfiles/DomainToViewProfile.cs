@@ -20,7 +20,8 @@ namespace ParrotWings.WebAPI.MappingProfiles
             CreateMap<User, UserViewModel>();
 
             //Transactions
-            CreateMap<Transaction, TransactionViewModel>();
+            CreateMap<Transaction, TransactionViewModel>().AfterMap(
+                (src, dest) => dest.DateCreate = src.DateCreate.ToString("dd/MM/yy hh:mm"));
             CreateMap<Transaction, TransactionDetailsViewModel>();
         }
     }

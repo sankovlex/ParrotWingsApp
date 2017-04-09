@@ -19,6 +19,7 @@ using System.Text;
 using ParrotWings.Models.Options;
 using ParrotWings.Services.Transactions;
 using ParrotWings.Services.Users;
+using ParrotWings.Data.Extensions;
 
 namespace ParrotWings.WebAPI
 {
@@ -41,18 +42,18 @@ namespace ParrotWings.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             //Database services
-            services.AddSingleton<IEfContext, EfContext>();
-            services.Add(new ServiceDescriptor(typeof(IRepository<>), typeof(DefaultRepository<>), ServiceLifetime.Singleton));
+            services.AddScoped<IEfContext, EfContext>();
+            services.Add(new ServiceDescriptor(typeof(IRepository<>), typeof(DefaultRepository<>), ServiceLifetime.Scoped));
             services.AddDbContext<EfContext>();
 
             //Options
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             //Custom services
-            services.AddSingleton<IAuthService, DefaultAuthService>();
-            services.AddSingleton<IPasswordProtector, DefaultPasswordProtector>();
-            services.AddSingleton<ITransactionService, DefaultTransactionService>();
-            services.AddSingleton<IUserService, DefaultUserService>();
+            services.AddScoped<IAuthService, DefaultAuthService>();
+            services.AddScoped<IPasswordProtector, DefaultPasswordProtector>();
+            services.AddScoped<ITransactionService, DefaultTransactionService>();
+            services.AddScoped<IUserService, DefaultUserService>();
 
             //AutoMapper configure
             var mapperConfiguration = new MapperConfiguration(options =>
@@ -75,13 +76,17 @@ namespace ParrotWings.WebAPI
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<EfContext>().Seed();
+            }
 
             app.Use(async (context, next) =>
             {
                 await next();
 
                 // If there's no available file and the request doesn't contain an extension, we're probably trying to access a page.
-                // Rewrite request to use app root
                 if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
                 {
                     context.Request.Path = "/index.html"; // Angular root page
@@ -103,20 +108,9 @@ namespace ParrotWings.WebAPI
                 ValidateAudience = true,
                 ValidAudience = appSettings.Audience,
 
-                ValidateLifetime = true,
-
-                //ClockSkew = TimeSpan.Zero
+                ValidateLifetime = true
             };
 
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions
-            //{
-            //    AutomaticAuthenticate = true,
-            //    AutomaticChallenge = true,
-            //    AuthenticationScheme = "Cookie",
-            //    CookieName = "access_token",
-            //    //CookieHttpOnly = true,
-            //    TicketDataFormat = new PWJwtDataFormat(SecurityAlgorithms.HmacSha256, validationParameters)
-            //});
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
                 AutomaticAuthenticate = true,

@@ -14,9 +14,11 @@ namespace ParrotWings.WebAPI.MappingProfiles
         {
             CreateMap<UserLoginPostModel, User>();
             CreateMap<UserRegisterPostModel, User>();
+            CreateMap<UserViewModel, User>();
 
             //transactions
-            CreateMap<TransactionPostModel, Transaction>();
+            CreateMap<TransactionPostModel, Transaction>()
+                .ForMember(dest => dest.Recipient, opt => opt.MapFrom(src => src.Recipient));
         }
     }
 }

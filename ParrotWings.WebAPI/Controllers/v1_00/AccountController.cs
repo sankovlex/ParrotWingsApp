@@ -43,7 +43,7 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
                 return BadRequest(new ErrorResponse
                 {
                     StatusCode = 400,
-                    Message = "Uncorrect data"
+                    Message = "Uncorrected data"
                 });
 
             var user = await authService.GetIdentityAsync(
@@ -54,7 +54,7 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
                 return BadRequest(new ErrorResponse
                 {
                     StatusCode = 400,
-                    Message = "Unknown login or password"
+                    Message = "Invalid   login or password"
                 });
             
             var accessToken = authService.GetBearerToken(user);
@@ -70,7 +70,7 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
                 return BadRequest(new ErrorResponse
                 {
                     StatusCode = 400,
-                    Message = "Uncorrect data"
+                    Message = "Uncorrected data"
                 });
 
             var user = mapper.Map<UserRegisterPostModel, Account.User>(userPostModel);

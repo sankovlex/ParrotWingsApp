@@ -88,14 +88,14 @@ namespace ParrotWings.Data.Core.Repository
         {
             //if (query == null)
             //    return Entities.ToList();
-            return query(Entities.AsNoTracking()).ToList();
+            return query(Entities).ToList();
         }
 
         public async Task<IEnumerable<TResult>> GetAsync<TResult>(Func<IQueryable<TEntity>, IQueryable<TResult>> query = null)
         {
             //if (query == null)
             //    return await Entities.ToListAsync();
-            return await query(Entities.AsNoTracking()).ToListAsync();
+            return await query(Entities).ToListAsync();
         }
 
         public TEntity Find(Expression<Func<TEntity, bool>> where, Func<IQueryable<TEntity>, IQueryable<TEntity>> prequery = null)

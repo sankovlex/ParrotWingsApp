@@ -6,7 +6,40 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Include="wwwroot\app\app.js" />
+    <Content Include="wwwroot\app\controllers\historyCtrl.js" />
+    <Content Include="wwwroot\app\controllers\homeCtrl.js" />
+    <Content Include="wwwroot\app\controllers\loginCtrl.js" />
+    <Content Include="wwwroot\app\controllers\profileCtrl.js" />
+    <Content Include="wwwroot\app\controllers\registerCtrl.js" />
+    <Content Include="wwwroot\app\controllers\transactCtrl.js" />
+    <Content Include="wwwroot\app\directives\accountPanel.js" />
+    <Content Include="wwwroot\app\directives\emailValidator.js" />
+    <Content Include="wwwroot\app\directives\passwordValidator.js" />
+    <Content Include="wwwroot\app\services\apiService.js" />
+    <Content Include="wwwroot\app\services\authHttpService.js" />
+    <Content Include="wwwroot\app\services\authService.js" />
+    <Content Include="wwwroot\app\views\account\login.html" />
+    <Content Include="wwwroot\app\views\account\register.html" />
+    <Content Include="wwwroot\app\views\directives\accountPanel.html" />
+    <Content Include="wwwroot\app\views\home\home.html" />
+    <Content Include="wwwroot\app\views\profile\history.html" />
+    <Content Include="wwwroot\app\views\profile\profile.html" />
+    <Content Include="wwwroot\app\views\profile\transact.html" />
+    <Content Include="wwwroot\css\account\login.scss" />
+    <Content Include="wwwroot\css\functions\mixins.scss" />
+    <Content Include="wwwroot\css\profile\history.scss" />
+    <Content Include="wwwroot\css\profile\profile.scss" />
+    <Content Include="wwwroot\css\profile\transaction.scss" />
+    <Content Include="wwwroot\css\sequence\main-theme.scss" />
+    <Content Include="wwwroot\css\site.scss" />
+    <Content Include="wwwroot\img\free.png" />
+    <Content Include="wwwroot\img\free2.png" />
+    <Content Include="wwwroot\img\free3.png" />
+    <Content Include="wwwroot\img\loggin-back.jpg" />
+    <Content Include="wwwroot\img\loggin-back.png" />
+    <Content Include="wwwroot\img\logo.png" />
+    <Content Include="wwwroot\index.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />

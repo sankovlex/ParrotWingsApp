@@ -1,0 +1,42 @@
+﻿.profile-page {
+    .box {
+        margin-bottom: 0.6em;
+        margin-top: 0.6em;
+        margin-left: 0;
+        margin-right: 0;
+
+        > div {
+            padding: 2em 1.8em;
+        }
+    }
+
+    .user-identity {
+        h1 {
+        }
+    }
+
+    .last-transactions {
+        small {
+            font-size: 0.75em;
+        }
+    }
+
+    .destionation {
+        display: none;
+
+        @media (max-width: 1400px) {
+            display: inline-block;
+        }
+    }
+
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.box {
+    background: #fff;
+    border: 1px solid #efefef;
+    box-shadow: 1px 2px 3px #efefef;
+}

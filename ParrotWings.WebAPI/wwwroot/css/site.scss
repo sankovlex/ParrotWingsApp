@@ -1,0 +1,83 @@
+﻿@import 'sequence/main-theme';
+@import 'account/login';
+@import 'profile/profile';
+@import 'profile/history';
+@import 'profile/transaction';
+
+body {
+    padding-top: 56px;
+    overflow-y: scroll;
+    background-color: #fdfdfd;
+}
+
+ng-view > div {
+    /*padding-top: 54px;
+    padding-bottom: -54px;*/
+}
+
+.debit {
+    color: #4CB050;
+}
+
+.debit::before{
+    content: "+";
+}
+
+.credit {
+    color: #E84C3D;
+}
+
+.credit::before{
+    content: "-";
+}
+
+.btn{
+    border-radius: 0;
+}
+
+@media (max-width: 576px) {
+    nav > .container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.btn-outline-primary {
+    border-color: #1293D5;
+    color: #1293D5 - 10;
+}
+
+.btn-primary {
+    background-color: #1293D5;
+    border-color: #1293D5 - 2;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 1px 2px 3px #efefef;
+}
+
+.getting-started {
+    background-color: #EFEFF1;
+    width: 100%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+
+    p {
+        font-size: 1.1em;
+        line-height: 2.2em;
+    }
+}
+
+.designed {
+    padding-top: 5em;
+    padding-bottom: 5em;
+
+    .media-icons{
+        padding-top: 2em;
+        text-align: center;
+        h4{
+            margin-top: 1.1em;
+        }
+    }
+}

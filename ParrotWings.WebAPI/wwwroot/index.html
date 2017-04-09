@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Parrot Wings | The best money transfers</title>
+
+    <!--3rd party-->
+    <link href="/lib/tether/dist/css/tether.min.css" rel="stylesheet" />
+    <link href="/lib/tether/dist/css/tether-theme-basic.min.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!--custom-->
+    <link href="/css/site.css" rel="stylesheet" />
+
+    <base href="/" />
+</head>
+<body ng-app="ParrotWingsApp">
+
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="img/logo.png"/>
+                Parrot<span class="txt-main-color"> Wings</span>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse">
+                </div>
+                <div class="navbar-collapse justify-content-end">
+                    <account-panel></account-panel>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <ng-view></ng-view>
+
+    <footer>
+
+    </footer>
+
+    <!--scripts-->
+    <!-- 3rd party -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/tether/dist/js/tether.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular-route/angular-route.min.js"></script>
+    <script src="/lib/angular-cookies/angular-cookies.min.js"></script>
+    <script src="/lib/angular-messages/angular-messages.min.js"></script>
+    <script src="/lib/sequencejs/scripts/imagesloaded.pkgd.min.js"></script>
+    <script src="/lib/sequencejs/scripts/hammer.min.js"></script>
+    <script src="/lib/sequencejs/scripts/sequence.min.js"></script>
+    <!-- angular app -->
+    <script src="/app/app.js"></script>
+    <!-- services -->
+    <script src="/app/services/apiService.js"></script>
+    <script src="/app/services/authService.js"></script>
+    <script src="/app/services/authHttpService.js"></script>
+    <!-- controllers -->
+    <script src="/app/controllers/homeCtrl.js"></script>
+    <script src="/app/controllers/loginCtrl.js"></script>
+    <script src="/app/controllers/profileCtrl.js"></script>
+    <script src="/app/controllers/registerCtrl.js"></script>
+    <script src="/app/controllers/historyCtrl.js"></script>
+    <script src="/app/controllers/transactCtrl.js"></script>
+    <!-- directives -->
+    <script src="/app/directives/accountPanel.js"></script>
+    <script src="/app/directives/emailValidator.js"></script>
+    <script src="/app/directives/passwordValidator.js"></script>
+</body>
+</html>
