@@ -35,6 +35,11 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // POST: account/token
+        /// <summary>
+        /// Get bearer authentication token
+        /// </summary>
+        /// <param name="userPostModel"></param>
+        /// <returns></returns>
         [HttpPost("token")]
         [AllowAnonymous]
         public async Task<IActionResult> Token([FromBody]UserLoginPostModel userPostModel)
@@ -63,6 +68,11 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // POST: account/register
+        /// <summary>
+        /// Create a new User
+        /// </summary>
+        /// <param name="userPostModel"></param>
+        /// <returns></returns>
         [HttpPost("register"), AllowAnonymous]
         public async Task<IActionResult> Register([FromBody]UserRegisterPostModel userPostModel)
         {

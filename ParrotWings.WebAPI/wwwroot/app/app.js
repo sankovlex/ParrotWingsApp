@@ -55,12 +55,7 @@
             $httpProvider.interceptors.push('authHttpService');
         }])
         .run(['$rootScope', '$location', '$cookieStore', '$http', 'authService', function ($rootScope, $location, $cookieStore, $http, authService) {
-            //$rootScope.$on('balanceChange', function () {
-            //    if ($rootScope.identity === null) {
-            //        $location.path("/login");
-            //    }
-            //    authService.isLoggedIn();
-            //});
+
             $rootScope.identity = $cookieStore.get('identity') || null;
         }]);
 

@@ -32,6 +32,12 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // GET: api/transactions
+        /// <summary>
+        /// Get all transactions for current user
+        /// </summary>
+        /// <param name="paging">skip, take</param>
+        /// <param name="filter">orderby, mode, party, search</param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Get(Paging paging, TransactionsQuery filter)
         {
@@ -52,6 +58,11 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // GET: api/transactions/5
+        /// <summary>
+        /// Get transaction by id (for current user)
+        /// </summary>
+        /// <param name="id">The transaction ID</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -66,6 +77,10 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // GET: api/transactions/balance
+        /// <summary>
+        /// Get sum transactions debit/credit (for current user)
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("balance")]
         public async Task<decimal> GetBalance()
         {
@@ -73,6 +88,11 @@ namespace ParrotWings.WebAPI.Controllers.v1_00
         }
 
         // POST: api/transactions
+        /// <summary>
+        /// Send transaction
+        /// </summary>
+        /// <param name="postModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]TransactionPostModel postModel)
         {

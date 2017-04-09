@@ -12,14 +12,12 @@
         <h1>Sign In</h1>
         <form name="form" role="form" ng-submit="vm.login()">
             <div class="form-group">
-                <!--<label class="control-label" for="email">Email</label>-->
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model="vm.user.email" required>
                 <span ng-messages="form.email.$error">
                     <span class="alert-danger" ng-message="required">Email is required!</span>
                 </span>
             </div>
             <div class="form-group">
-                <!--<label class="control-label" for="password">Password</label>-->
                 <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.user.password" required>
                 <span ng-messages="form.email.$error">
                     <span class="alert-danger" ng-message="required">Email is required!</span>
