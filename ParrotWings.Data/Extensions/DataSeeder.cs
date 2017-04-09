@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Storage;
 using ParrotWings.Data.Core;
 using ParrotWings.Models.Domain.Accounts;
 using System;
@@ -12,7 +13,7 @@ namespace ParrotWings.Data.Extensions
     {
         public static void Seed(this EfContext context)
         {
-            
+            context.Database.EnsureCreated();
             if (!context.Users.Any())
             {
 

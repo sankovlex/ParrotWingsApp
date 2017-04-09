@@ -20,6 +20,7 @@ using ParrotWings.Models.Options;
 using ParrotWings.Services.Transactions;
 using ParrotWings.Services.Users;
 using ParrotWings.Data.Extensions;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ParrotWings.WebAPI
 {
@@ -76,11 +77,6 @@ namespace ParrotWings.WebAPI
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                serviceScope.ServiceProvider.GetService<EfContext>().Seed();
-            }
 
             app.Use(async (context, next) =>
             {
@@ -122,6 +118,11 @@ namespace ParrotWings.WebAPI
             app.UseFileServer();
 
             app.UseMvc();
+            
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<EfContext>().Seed();
+            }
         }
     }
 }

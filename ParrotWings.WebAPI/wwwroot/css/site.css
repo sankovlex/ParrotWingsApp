@@ -99,18 +99,8 @@
   @media (max-width: 800px) {
     .loggin-page .left-box {
       display: none; } }
-  .loggin-page .row {
-    /*position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;*/ }
-  .loggin-page .row > * {
-    /*height: 100%;*/ }
   .loggin-page .media-content {
     height: 93.9vh;
-    /*height: 100%;*/
     background: url(/img/loggin-back.jpg) center right;
     color: #fff; }
     .loggin-page .media-content h1, .loggin-page .media-content h2, .loggin-page .media-content h3, .loggin-page .media-content h4 {
